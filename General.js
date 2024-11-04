@@ -15,6 +15,5 @@ function cerrar() {
 }
 
 
-
-
 AOS.init();
+

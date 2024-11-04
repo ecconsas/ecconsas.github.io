@@ -57,32 +57,32 @@
                         <label for="nombre">Nombre</label>
                         <br>
 
-                        <input tabindex="1" type="text" name="nombre" placeholder="Ingresa tu nombre">
+                        <input id="nombre" tabindex="1" type="text" name="nombre" placeholder="Ingresa tu nombre">
                         <br>
                     </div>
                     <br>
                     <div>
-                        <label for="presupuesto">Asunto</label>
+                        <label for="asunto">Asunto</label>
                         <br>
-                        <input tabindex="2" type="text" name="presupuesto" placeholder="Ingresa tu Asunto">
+                        <input id="asunto" tabindex="2" type="text" name="asunto" placeholder="Ingresa tu Asunto">
                         <br>
                     </div>
                     <br>
                     <div>
                         <label for="correo">Correo Electrónico</label>
                         <br>
-                        <input tabindex="3" type="email" name="correo" placeholder="Ingresa tu correo electrónico">
+                        <input id="correo" tabindex="3" type="email" name="correo" placeholder="Ingresa tu correo electrónico">
                         <br>
                     </div>
                     <br>
                     <div>
                         <label for="mensaje">Mensaje</label>
                         <br>
-                        <textarea   tabindex="4" name="mensaje" rows="1" placeholder="Ingresa tu mensaje"></textarea>
+                        <textarea id="mensaje" tabindex="4" name="mensaje" rows="1" placeholder="Ingresa tu mensaje"></textarea>
                         <br>
                     </div>
 
-                    <button type="submit">Enviar</button>
+                    <button type="submit" onclick="enviar()">Enviar</button>
             </form>
             </div>
             <br>
@@ -107,8 +107,10 @@
                             data-aos="flip-down" src="imagenes/tiktok.svg"></a>
                 </section>
             </div>
+            
 
         </article>
+        
         <br><br><br>
         <article>
 
@@ -146,7 +148,6 @@
         <br>
 
 
-        <a href="mailto:ecconsas@gmail.com" id="click"></a>
 
 
     </section>
@@ -160,16 +161,14 @@
 
     <script>
 
-        const $form = document.querySelector('#form')
-        const $buttonMailto = document.querySelector('#click')
-
-        $form.addEventListener('submit', handleSubmit)
-
-        function handleSubmit(event) {
+        function enviar(){
             event.preventDefault()
-            const form = new FormData(this)
-            $buttonMailto.setAttribute('href', `mailto:ecconsas@gmail.com?subject=NOMBRE: ${form.get('nombre')}  CORREO: ${form.get('correo')}&body=${form.get('mensaje')}`)
-            $buttonMailto.click()
+            eccon = "ecconsas@gmail.com"
+            nombre = document.getElementById("nombre").value
+            asunto = document.getElementById("asunto").value
+            correo = document.getElementById("correo").value
+            mensaje = document.getElementById("mensaje").value
+            window.location.href = `mailto:${eccon}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(nombre)},%0A%0A${encodeURIComponent(mensaje)}`;
         }
 
     </script>
